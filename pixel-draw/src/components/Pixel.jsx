@@ -21,7 +21,7 @@ function Pixel(props){
         if(canChangeColor){
             setPixelColor(oldColor);
         }
-        setOnPixel(false)
+        setCanChangeColor(true)
     }
 
     return( 
