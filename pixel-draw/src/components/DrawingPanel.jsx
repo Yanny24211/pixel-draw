@@ -1,15 +1,14 @@
 import Row from './Row'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import './components.css'
 import html2canvas from 'html2canvas'
-import { exportComponentAsPNG } from 'react-component-export-image'
-
 
 function DrawingPanel(props){
-    const { width, height, color } = props
+    const { width, height, color, pixelWidth, pixelHeight  } = props
+    const [ canvasName, setCanvasName] = useState(null)
     const rows = []
     for(let i = 0; i < height; i++){
-        rows.push(<Row key={i} width={width} color={color}/>)
+        rows.push(<Row pixelWidth={pixelWidth} pixelHeight={pixelHeight} key={i} width={width} color={color}/>)
     }
     const panelRef = useRef()
 
@@ -19,7 +18,7 @@ function DrawingPanel(props){
             backgroundColor: null, 
           });
           const link = document.createElement("a");
-          link.download = "my-masterpeice.png";
+          link.download = `${canvasName ?? "my-masterpeice"}.png`;
           link.href = canvas.toDataURL("image/png");
           link.click();
         }
@@ -27,6 +26,7 @@ function DrawingPanel(props){
     
     return(
         <div className="drawing-panel">
+            <input id="canvasName" type="text" placeholder={'Name Your Masterpeice'} value={canvasName} onChange={(e) => setCanvasName(e.target.value)}/>
             <div id='canvas' ref={panelRef}>
                 {rows}
             </div>
