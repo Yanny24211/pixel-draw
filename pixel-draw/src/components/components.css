@@ -19,6 +19,7 @@
     margin: 20px
 }
 .options{
+    display: flex; 
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;

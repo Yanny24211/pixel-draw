@@ -2,6 +2,7 @@ import { useState } from 'react'
 import DrawingPanel from './DrawingPanel';
 import { TwitterPicker, CirclePicker } from 'react-color';
 import './components.css'
+import zeMascot from '../assets/person.png'
 function Editor(){
     const [width, setWidth] = useState(16);
     const [height, setHeight] = useState(16);
@@ -31,6 +32,7 @@ function Editor(){
         <div className="editor">
             {showOptions && <div className="options">
                 <div className='options-header'>LE ART</div>
+                <img style={{height: '150px'}} src={zeMascot} alt="Website Logo"/>
                 <div className="text">Canvas Dimensions</div>
                 <div className="options-inputbox">
                     <div className="options-input"><input type="number" id="width" name="width" defaultValue={width} onChange={(e)=>{
