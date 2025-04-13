@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './components.css'
 
 function Pixel(props){
-    const { color } = props
+    const { color, pixelWidth, pixelHeight} = props
     const [isMouseDrag, setIsMouseDrag] = useState(false)
     const [pixelColor, setPixelColor] = useState('#fff');
     const [oldColor, setOldColor] = useState(pixelColor)
@@ -10,7 +10,6 @@ function Pixel(props){
 
     useState(()=>{
         const handleMouseDown = () => {
-            console.log("mouse down bruh")
             setIsMouseDrag(true);
         }
         const handleMouseUp = () => setIsMouseDrag(false);
@@ -41,7 +40,7 @@ function Pixel(props){
     }
 
     return( 
-        <div className="pixel" onMouseDown={changeColor} onMouseEnter={isMouseDrag ? changeColor :showNewColor } onMouseLeave={handleReset} style={{ backgroundColor: pixelColor}}></div>
+        <div className="pixel" onMouseDown={changeColor} onMouseEnter={isMouseDrag ? changeColor :showNewColor } onMouseLeave={handleReset} style={{ width: `${pixelWidth}px`, height:`${pixelHeight}px`, backgroundColor: pixelColor}}></div>
     )
 }
 
